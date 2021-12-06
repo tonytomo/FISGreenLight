@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FIS</title>
 
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <p>Jumlah Motor</p>
-    <input type="number" name="motor" id="motor" placeholder="jumlah motor">
-    <p>Jumlah Mobil</p>
-    <input type="number" name="mobil" id="mobil" placeholder="jumlah mobil">
-    <p>Jumlah Truk</p>
-    <input type="number" name="truk" id="truk" placeholder="jumlah truk">
-    <p>Lebar Jalan</p>
-    <input type="number" name="v2" id="v2" placeholder="lebar jalan">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title">
+        <h1>Penghitung lama lampu hijau</h1>
+        <h3>Menghitung lama lampu hijau (detik) menggunakan algoritma FIS</h3>
+        <hr />
+      </div>
 
-    <button onmousedown="doFIS()">calculate</button>
+      <p>Jumlah Motor</p>
+      <input type="number" name="motor" id="motor" placeholder="Jumlah motor" autofocus />
+      <p>Jumlah Mobil</p>
+      <input type="number" name="mobil" id="mobil" placeholder="Jumlah mobil" />
+      <p>Jumlah Truk</p>
+      <input type="number" name="truk" id="truk" placeholder="Jumlah truk" />
+      <p>Lebar Jalan</p>
+      <input type="number" name="v2" id="v2" placeholder="Lebar jalan" />
 
-    <p>Hasil</p>
-    <p id="result">0 detik</p>
-    
+      <button id="submit" onclick="doFIS()">Hitung</button>
+      <button onmousedown="clearAll()">Hapus</button>
+
+      <p>Hasil</p>
+      <h3 id="result">0 detik</h3>
+    </div>
+
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

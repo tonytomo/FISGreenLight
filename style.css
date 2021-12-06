@@ -3,9 +3,24 @@ html, body {
 }
 
 body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgb(104, 88, 245);
+}
+
+.container {
+    border: 2px inset black;
+    background-color: white;
+    padding: 10px;
+}
+
+.container > * {
+    padding: 4px;
+}
+
+h1, h3, p {
+    margin: 0;
+    padding: 0;
 }
