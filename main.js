@@ -3,6 +3,9 @@ console.log("Javascript loaded!");
 const submit = document.getElementById("submit");
 const clear = document.getElementById("clear");
 
+const input1 = document.getElementById("input1");
+const input2 = document.getElementById("input2");
+
 const motor = document.getElementById("motor");
 const mobil = document.getElementById("mobil");
 const truk = document.getElementById("truk");
@@ -152,6 +155,8 @@ function doFIS() {
   console.log(`kendaraan: ${kendaraan}, lebar: ${lebar}`);
   console.log("lama green light: " + sumalphazi / sumalpha + " detik");
 
+  input1.innerHTML = `Kendaraan = ${kendaraan} motor`;
+  input2.innerHTML = `Lebar Jalan = ${lebar} m`;
   result.innerHTML = Math.ceil(sumalphazi / sumalpha) + " detik";
 }
 
