@@ -1,0 +1,88 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background-color: rgb(104, 88, 245);
+}
+
+.container {
+  border: 2px inset black;
+  background-color: white;
+  padding: 20px;
+}
+
+.title > h1 {
+    padding: 4px 0;
+}
+
+.traffic {
+  display: flex;
+  justify-content: center;
+  background-color: #ddd;
+  margin: 0 0 10px 0;
+}
+.traffic > p {
+  display: grid;
+  place-items: center;
+}
+.countdown {
+  display: grid;
+  place-items: center;
+  background-color: black;
+  color: limegreen;
+  font-weight: bold;
+  font-family: monospace;
+  font-size: 30pt;
+  width: 80px;
+  margin-right: 20px;
+}
+.lamps {
+  display: flex;
+  gap: 5px;
+  padding: 10px;
+  background-color: black;
+}
+.lamp {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
+}
+.red {
+  background-color: red;
+  opacity: 1;
+}
+.yellow {
+  background-color: yellow;
+}
+.green {
+  background-color: limegreen;
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.forms > * {
+  padding: 4px;
+}
+
+.info {
+  border: 2px inset black;
+  padding: 20px;
+}
+
+h1,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}

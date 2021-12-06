@@ -127,6 +127,10 @@ function clearAll() {
   mobil.value = "";
   truk.value = "";
   v2.value = "";
+
+  input1.innerHTML = `Kendaraan = 0 motor`;
+  input2.innerHTML = `Lebar Jalan = 0 m`;
+  result.innerHTML = 0 + " detik";
 }
 
 function doFIS() {

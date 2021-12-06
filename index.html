@@ -1,71 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FIS</title>
-
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div class="container">
-      <div class="title">
-        <h1>Penghitung lama lampu hijau</h1>
-        <h3>
-          Menghitung lama lampu hijau (detik) menggunakan algoritma FIS
-          <br />dengan metode Tsukamoto
-        </h3>
-        <hr />
-      </div>
-
-      <div class="content">
-      <div class="forms">
-        <p>Jumlah Motor</p>
-        <input
-          type="number"
-          name="motor"
-          id="motor"
-          placeholder="Jumlah motor"
-          autofocus
-        />
-        <p>Jumlah Mobil</p>
-        <input
-          type="number"
-          name="mobil"
-          id="mobil"
-          placeholder="Jumlah mobil"
-        />
-        <p>Jumlah Truk</p>
-        <input type="number" name="truk" id="truk" placeholder="Jumlah truk" />
-        <p>Lebar Jalan</p>
-        <input type="number" name="v2" id="v2" placeholder="Lebar jalan" />
-
-        <button id="submit" onclick="doFIS()">Hitung</button>
-        <button id="clear" onclick="clearAll()">Hapus</button>
-      </div>
-
-      <div class="info">
-        <div class="konversi">
-        <h4>Konversi</h4>
-        <hr>
-        <p>Mobil = 2 motor</p>
-        <p>Truk = 8 motor</p>
-      </div>
-      <hr>
-      <div class="input">
-        <h4>Input</h4>
-        <hr>
-        <p id="input1">Kendaraan = 0 motor</p>
-        <p id="input2">Lebar Jalan = 0 m</p>
-      </div>
-      </div>
-    </div>
-
-      <p>Hasil</p>
-      <h3 id="result">0 detik</h3>
-    </div>
-
-    <script src="main.js"></script>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FIS green light</title>
+</head>
+<body>
+    <h4>Implementasi FIS pada penentuan lama lampu hijau</h4>
+    <p>mode:</p>
+    <ul>
+        <li><a href="regular/index.html">regular</a></li>
+        <li><a href="game/index.html">game</a></li>
+    </ul>
+</body>
 </html>

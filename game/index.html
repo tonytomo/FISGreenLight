@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenTime</title>
+
+    <link rel="stylesheet" href="game.css">
+</head>
+<body>
+    <div class="container">
+        <div class="traffic_lamp">
+            <div class="control">
+                <button onmousedown="toggleVehicle()" class="toggle" id="toggle">motor</button>
+                <button onmousedown="clearAll()">hapus</button>
+                <input type="number" name="lebar" id="lebar" placeholder="Lebar">
+                <button onmousedown="changeSize()">ubah</button>
+                <button onmousedown="play()">mulai</button>
+            </div>
+            <div class="countdown" id="countdown"></div>
+            <div class="lamps">
+                <div class="lamp green" id="green"></div>
+                <div class="lamp yellow" id="yellow"></div>
+                <div class="lamp red" id="red"></div>
+            </div>
+        </div>
+        <canvas id="board" width="600" height="350">
+            Canvas is not supported
+        </canvas>
+        <div class="lebarjalan" id='lebarjalan'>
+            <hr>
+            <p id="roadWidth">15 meter</p>
+        </div>
+        <div class="counter">
+            <p id="motor">Motor: 0</p>
+            <p id="mobil">Mobil: 0 (2)</p>
+            <p id="truk">Truk: 0 (8)</p>
+            <p id="kendaraan"> = 0</p>
+        </div>
+    </div>
+    
+    <script src="game.js"></script>
+    <script src="fis.js"></script>
+</body>
+</html>
