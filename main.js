@@ -1,6 +1,7 @@
 console.log("Javascript loaded!");
 
 const submit = document.getElementById("submit");
+const clear = document.getElementById("clear");
 
 const motor = document.getElementById("motor");
 const mobil = document.getElementById("mobil");
@@ -104,18 +105,25 @@ var rules = [
   },
 ];
 
-v2.addEventListener("keyup", function(event) {
-    if (event.keyCode === 13) {
-     event.preventDefault();
-     submit.click();
+submit.addEventListener("keyup", function (event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    submit.click();
+  }
+});
+
+clear.addEventListener("keyup", function (event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      clear.click();
     }
   });
 
 function clearAll() {
-    motor.value = '';
-    mobil.value = '';
-    truk.value = '';
-    v2.value = '';
+  motor.value = "";
+  mobil.value = "";
+  truk.value = "";
+  v2.value = "";
 }
 
 function doFIS() {
@@ -123,8 +131,10 @@ function doFIS() {
   let sumalpha = 0;
   let sumalphazi = 0;
 
-  //   kendaraan = document.getElementById("v1").value;
-  kendaraan = parseInt(motor.value) + parseInt(mobil.value) * 2 + parseInt(truk.value * 8);
+  kendaraan =
+    parseInt(motor.value) +
+    parseInt(mobil.value) * 2 +
+    parseInt(truk.value * 8);
   lebar = v2.value;
 
   for (let i = 0; i < rules.length; i++) {
