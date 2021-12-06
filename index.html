@@ -12,21 +12,46 @@
     <div class="container">
       <div class="title">
         <h1>Penghitung lama lampu hijau</h1>
-        <h3>Menghitung lama lampu hijau (detik) menggunakan algoritma FIS</h3>
+        <h3>
+          Menghitung lama lampu hijau (detik) menggunakan algoritma FIS
+          <br />dengan metode Tsukamoto
+        </h3>
         <hr />
       </div>
 
-      <p>Jumlah Motor</p>
-      <input type="number" name="motor" id="motor" placeholder="Jumlah motor" autofocus />
-      <p>Jumlah Mobil</p>
-      <input type="number" name="mobil" id="mobil" placeholder="Jumlah mobil" />
-      <p>Jumlah Truk</p>
-      <input type="number" name="truk" id="truk" placeholder="Jumlah truk" />
-      <p>Lebar Jalan</p>
-      <input type="number" name="v2" id="v2" placeholder="Lebar jalan" />
+      <div class="content">
+      <div class="forms">
+        <p>Jumlah Motor</p>
+        <input
+          type="number"
+          name="motor"
+          id="motor"
+          placeholder="Jumlah motor"
+          autofocus
+        />
+        <p>Jumlah Mobil</p>
+        <input
+          type="number"
+          name="mobil"
+          id="mobil"
+          placeholder="Jumlah mobil"
+        />
+        <p>Jumlah Truk</p>
+        <input type="number" name="truk" id="truk" placeholder="Jumlah truk" />
+        <p>Lebar Jalan</p>
+        <input type="number" name="v2" id="v2" placeholder="Lebar jalan" />
 
-      <button id="submit" onclick="doFIS()">Hitung</button>
-      <button id="clear" onclick="clearAll()">Hapus</button>
+        <button id="submit" onclick="doFIS()">Hitung</button>
+        <button id="clear" onclick="clearAll()">Hapus</button>
+      </div>
+
+      <div class="info">
+        <h4>Konversi</h4>
+        <hr>
+        <p>Mobil = 2 motor</p>
+        <p>Truk = 8 motor</p>
+      </div>
+    </div>
 
       <p>Hasil</p>
       <h3 id="result">0 detik</h3>
