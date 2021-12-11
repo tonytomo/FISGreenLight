@@ -56,7 +56,7 @@ function main() {
 
 (Untuk sekarang) hanya bisa digunakan pada fungsi keanggotaan seperti dibawah ini:
 
-![fungsi keanggotaan](game\fungsi.PNG)
+![fungsi keanggotaan](https://github.com/tonytomo/FISGreenLight/blob/master/game/fungsi.PNG?raw=true)
 
 Ada 3 tipe grafik:
 * `down` dari atas ke bawah (ex: sedikit) dengan 2 input
