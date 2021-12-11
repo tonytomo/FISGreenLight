@@ -1,5 +1,5 @@
 // Warna
-const MOTOR_COL = "#2394b6";
+const MOTOR_COL = "#0d3385";
 const MOBIL_COL = "#ffa500";
 const TRUK_COL = "#32cd32";
 
@@ -46,7 +46,7 @@ function changeSize() {
   let lebar = v2.value;
   if (lebar > 0) {
     clearAll();
-    let boardWidth = lebar * 40;
+    let boardWidth = lebar * 30;
     board.setAttribute("width", boardWidth.toString());
     lebarjalan.style.width = boardWidth.toString() + "px";
     roadWidth.innerHTML = `${lebar} meter`;
@@ -66,7 +66,7 @@ function toggleVehicle() {
   } else {
     chosen = "motor";
     toggle.innerHTML = "motor";
-    toggle.style.backgroundColor = "#2394b6";
+    toggle.style.backgroundColor = "#0d3385";
   }
 }
 

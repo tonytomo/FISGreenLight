@@ -8,7 +8,7 @@ body {
   padding: 0;
   display: grid;
   place-items: center;
-  background-color: #333;
+  background-color: #124f48;
 }
 
 .container {
@@ -18,7 +18,7 @@ body {
 
 .traffic_lamp {
   max-height: 60px;
-  border-top: 20px solid #888;
+  border-top: 20px solid #777;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -48,7 +48,7 @@ button:hover {
 }
 
 .toggle {
-    background-color: #2394b6;
+    background-color: #0d3385;
 }
 
 .countdown {
@@ -57,8 +57,8 @@ button:hover {
   background-color: #000;
   color: #32cd32;
   font-weight: bold;
-  font-family: monospace;
-  font-size: 30pt;
+  font-family: 'Segoe UI';
+  font-size: 26pt;
   width: 80px;
   margin: 0 20px 0 20px;
 }
@@ -86,8 +86,8 @@ button:hover {
 }
 
 canvas {
-  background-color: #222;
-  border-left: 7px dashed #ffff00;
+  background-color: #777;
+  border-left: 7px solid #fff;
   border-right: 7px solid #fff;
 }
 
@@ -99,7 +99,7 @@ canvas {
     margin: 0;
     padding: 0;
     color: #fff;
-    font-family: monospace;
+    font-family: 'Segoe UI';
     font-size: 16pt;
 }
 
@@ -111,6 +111,6 @@ canvas {
     margin: 0;
     padding: 0;
     font-weight: bold;
-    font-family: monospace;
+    font-family: 'Segoe UI';
     font-size: 20pt;
 }
