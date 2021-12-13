@@ -41,7 +41,7 @@ function calculate() {
     outputVar
   );
 
-  let numwidth = 20;
+  let numwidth = 10;
   let numvehicle =
     parseInt(nummotor) + parseInt(nummobil) * 2 + parseInt(numtruk * 8);
   if (v2.value != 0) {

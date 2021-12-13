@@ -74,7 +74,7 @@ function doFIS() {
     outputVar
   );
 
-  let numwidth = 20;
+  let numwidth = 0;
   let numvehicle =
     parseInt(motor.value) + parseInt(mobil.value) * 2 + parseInt(truk.value * 8);
   if (v2.value != 0) {
