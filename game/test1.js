@@ -1,20 +1,20 @@
 let inputVar = [
   new Variable("vehicles", [
-    new Term("sedikit", "down", [0, 20]),
-    new Term("sedang", "updown", [14, 20, 26]),
-    new Term("banyak", "up", [20, 30]),
+    new Term("sedikit", "down", [0, 25]),
+    new Term("sedang", "updown", [20, 30, 40]),
+    new Term("banyak", "up", [35, 60]),
   ]),
   new Variable("roadwidth", [
-    new Term("sempit", "down", [0, 6]),
-    new Term("sedang", "updown", [4, 10, 16]),
-    new Term("lebar", "up", [14, 20]),
+    new Term("sempit", "down", [0, 7]),
+    new Term("sedang", "updown", [2, 10, 17]),
+    new Term("lebar", "up", [13, 20]),
   ]),
 ];
 
 let outputVar = new Variable("greentime", [
-  new Term("sebentar", "down", [0, 15]),
-  new Term("sedang", "updown", [12, 25, 33]),
-  new Term("lama", "up", [30, 50]),
+  new Term("sebentar", "down", [0, 18]),
+  new Term("sedang", "updown", [12, 28, 40]),
+  new Term("lama", "up", [35, 45]),
 ]);
 
 let testrules = [
@@ -23,10 +23,10 @@ let testrules = [
   new Rule(["sedikit", "lebar"], "sebentar"),
   new Rule(["sedang", "sempit"], "sedang"),
   new Rule(["sedang", "sedang"], "sedang"),
-  new Rule(["sedang", "lebar"], "sebentar"),
+  new Rule(["sedang", "lebar"], "sedang"),
   new Rule(["banyak", "sempit"], "lama"),
   new Rule(["banyak", "sedang"], "lama"),
-  new Rule(["banyak", "lebar"], "sedang"),
+  new Rule(["banyak", "lebar"], "lama"),
 ];
 
 function calculate() {
@@ -44,7 +44,11 @@ function calculate() {
     numwidth = v2.value;
   }
 
-  let testans = greentime.calcResult([numvehicle, numwidth]);
+  let testans = 0;
+
+  if (numvehicle != 0) {
+    testans = greentime.calcResult([numvehicle, numwidth]);
+  }
   if (Math.ceil(testans) != 0) {
     red.style.opacity = 0.2;
     green.style.opacity = 1;

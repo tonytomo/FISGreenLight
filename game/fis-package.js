@@ -45,7 +45,6 @@ class FISenv {
         sumalphazi += result[`alphazi`];
       }
     }
-    console.log(`Hasil: ${Math.ceil(sumalphazi / sumalpha)}`);
 
     return sumalphazi / sumalpha;
   }
@@ -96,11 +95,19 @@ class Term {
 
   output(input) {
     if (this.type == "down") {
-      return 15 - 15 * input;
+      return this.x[1] - (this.x[1] - this.x[0]) * input;
     } else if (this.type == "updown") {
-      return 7 * input + 12;
+      // return (this.x[1]- this.x[0]) * input + this.x[1];
+      // return this.x[2] - (this.x[2] - this.x[1]) * input;
+      if (input < this.x[1]) {
+        return (this.x[1]- this.x[0]) * input + this.x[1];
+      } else {
+        return this.x[2] - (this.x[2] - this.x[1]) * input;
+      }
+    } else if (this.type == "up"){
+      return (this.x[1] - this.x[0]) * input + this.x[1];
     } else {
-      return 20 * input + 30;
+      return 0;
     }
   }
 
@@ -117,11 +124,13 @@ class Term {
       else if (input > this.x[1] && input < this.x[2])
         return (this.x[2] - input) / (this.x[2] - this.x[1]);
       else return 0;
-    } else {
+    } else if (this.type == "up") {
       if (input >= this.x[1]) return 1;
       else if (input > this.x[0] && input < this.x[1])
         return (input - this.x[0]) / (this.x[1] - this.x[0]);
       else return 0;
+    } else {
+      return 0;
     }
   }
 }
