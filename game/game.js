@@ -4,8 +4,11 @@ const MOBIL_COL = "#ffa500";
 const TRUK_COL = "#32cd32";
 
 let motor = [];
+let motorline = [];
 let mobil = [];
+let mobilline = [];
 let truk = [];
+let trukline = [];
 
 var nummotor = 0;
 var nummobil = 0;
@@ -73,8 +76,11 @@ function toggleVehicle() {
 // clear all
 function clearAll() {
   motor = [];
+  motorline = [];
   mobil = [];
+  mobilline = [];
   truk = [];
+  trukline = [];
   nummotor = 0;
   nummobil = 0;
   numtruk = 0;
@@ -194,6 +200,7 @@ function drawLineObs(x1, y1) {
           motor.push({ x: newX + 20 * i, y: newY + 20 * j });
         }
       }
+      motorline.push({ x: newX, y: newY });
       nummotor++;
       motorCounter.innerHTML = `Motor: ${nummotor}`;
     } else if (chosen == "mobil") {
@@ -202,6 +209,7 @@ function drawLineObs(x1, y1) {
           mobil.push({ x: newX + 20 * i, y: newY + 20 * j });
         }
       }
+      mobilline.push({ x: newX, y: newY });
       nummobil++;
       mobilCounter.innerHTML = `Mobil: ${nummobil} (2)`;
     } else {
@@ -210,6 +218,7 @@ function drawLineObs(x1, y1) {
           truk.push({ x: newX + 20 * i, y: newY + 20 * j });
         }
       }
+      trukline.push({ x: newX, y: newY });
       numtruk++;
       trukCounter.innerHTML = `Truk: ${numtruk} (8)`;
     }
@@ -223,10 +232,13 @@ function drawObs() {
   // Menggambar setiap ruas
   if (chosen == "motor") {
     motor.forEach(drawObsPart);
+    motorline.forEach(drawObsLinePart);
   } else if (chosen == "mobil") {
     mobil.forEach(drawObsPart);
+    mobilline.forEach(drawObsLinePart);
   } else {
     truk.forEach(drawObsPart);
+    trukline.forEach(drawObsLinePart);
   }
 }
 
@@ -241,4 +253,16 @@ function drawObsPart(obsPart) {
     ctx.fillStyle = TRUK_COL;
   }
   ctx.fillRect(obsPart.x, obsPart.y, 20, 20);
+}
+
+// Menggambar setiap border ruas
+function drawObsLinePart(obsPart) {
+  // Mewarnai dan menggambar border ruas
+  if (chosen == "motor") {
+    ctx.strokeRect(obsPart.x, obsPart.y, 20, 40);
+  } else if (chosen == "mobil") {
+    ctx.strokeRect(obsPart.x, obsPart.y, 40, 60);
+  } else {
+    ctx.strokeRect(obsPart.x, obsPart.y, 60, 100);
+  }
 }
