@@ -1,5 +1,3 @@
-console.log("Javascript loaded!");
-
 const submit = document.getElementById("submit");
 const clear = document.getElementById("clear");
 
@@ -12,100 +10,35 @@ const truk = document.getElementById("truk");
 const v2 = document.getElementById("v2");
 const result = document.getElementById("result");
 
-var kendaraan = 0;
-var lebar = 0;
+let inputVar = [
+  new Variable("vehicles", [
+    new Term("sedikit", "down", [0, 25]),
+    new Term("sedang", "updown", [20, 30, 40]),
+    new Term("banyak", "up", [35, 60]),
+  ]),
+  new Variable("roadwidth", [
+    new Term("sempit", "down", [0, 7]),
+    new Term("sedang", "updown", [2, 10, 17]),
+    new Term("lebar", "up", [13, 20]),
+  ]),
+];
 
-var rules = [
-  {
-    kendaraan: "sedikit",
-    lebar: "sempit",
-    lama: "sedang",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "sedikit",
-    lebar: "sedang",
-    lama: "sebentar",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "sedikit",
-    lebar: "lebar",
-    lama: "sebentar",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "sedang",
-    lebar: "sempit",
-    lama: "sedang",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "sedang",
-    lebar: "sedang",
-    lama: "sedang",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "sedang",
-    lebar: "lebar",
-    lama: "sebentar",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "banyak",
-    lebar: "sempit",
-    lama: "lama",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "banyak",
-    lebar: "sedang",
-    lama: "lama",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
-  {
-    kendaraan: "banyak",
-    lebar: "lebar",
-    lama: "sedang",
-    termKendaraan: 0,
-    termLebar: 0,
-    alpha: 0,
-    zi: 0,
-    alphazi: 0,
-  },
+let outputVar = new Variable("greentime", [
+  new Term("sebentar", "down", [0, 18]),
+  new Term("sedang", "updown", [12, 28, 40]),
+  new Term("lama", "up", [35, 45]),
+]);
+
+let testrules = [
+  new Rule(["sedikit", "sempit"], "sedang"),
+  new Rule(["sedikit", "sedang"], "sebentar"),
+  new Rule(["sedikit", "lebar"], "sebentar"),
+  new Rule(["sedang", "sempit"], "sedang"),
+  new Rule(["sedang", "sedang"], "sedang"),
+  new Rule(["sedang", "lebar"], "sedang"),
+  new Rule(["banyak", "sempit"], "lama"),
+  new Rule(["banyak", "sedang"], "lama"),
+  new Rule(["banyak", "lebar"], "lama"),
 ];
 
 submit.addEventListener("keyup", function (event) {
@@ -116,11 +49,11 @@ submit.addEventListener("keyup", function (event) {
 });
 
 clear.addEventListener("keyup", function (event) {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      clear.click();
-    }
-  });
+  if (event.key === "Enter") {
+    event.preventDefault();
+    clear.click();
+  }
+});
 
 function clearAll() {
   motor.value = "";
@@ -134,91 +67,29 @@ function clearAll() {
 }
 
 function doFIS() {
-  // do fis
-  let sumalpha = 0;
-  let sumalphazi = 0;
+  let greentime = new FISenv(
+    "Lama Lampu Hijau",
+    testrules,
+    inputVar,
+    outputVar
+  );
 
-  kendaraan =
-    parseInt(motor.value) +
-    parseInt(mobil.value) * 2 +
-    parseInt(truk.value * 8);
-  lebar = v2.value;
+  let numwidth = 20;
+  let numvehicle =
+    parseInt(motor.value) + parseInt(mobil.value) * 2 + parseInt(truk.value * 8);
+  if (v2.value != 0) {
+    numwidth = v2.value;
+  }
 
-  for (let i = 0; i < rules.length; i++) {
-    rules[i].termKendaraan = kendaraanTerm(rules[i].kendaraan);
-    rules[i].termLebar = lebarTerm(rules[i].lebar);
-    rules[i].alpha = Math.min(rules[i].termKendaraan, rules[i].termLebar);
-    rules[i].zi = lamaTerm(rules[i].lama, rules[i].alpha);
-    rules[i].alphazi = rules[i].alpha * rules[i].zi;
+  let testans = 0;
 
-    sumalpha += rules[i].alpha;
-    sumalphazi += rules[i].alphazi;
+  if (numvehicle != 0) {
+    testans = greentime.calcResult([numvehicle, numwidth]);
+  }
 
-    // console.log(rules[i]);
-  }
-  console.log(`kendaraan: ${kendaraan}, lebar: ${lebar}`);
-  console.log("lama green light: " + sumalphazi / sumalpha + " detik");
-
-  input1.innerHTML = `Kendaraan = ${kendaraan} motor`;
-  input2.innerHTML = `Lebar Jalan = ${lebar} m`;
-  result.innerHTML = Math.ceil(sumalphazi / sumalpha) + " detik";
-}
-
-function kendaraanTerm(term) {
-  // IF kendaraan sedikit
-  if (term == "sedikit") {
-    if (kendaraan == 0) return 1;
-    else if (kendaraan > 0 && kendaraan < 20) return (20 - kendaraan) / 20;
-    else return 0;
-  }
-  // IF kendaraan sedang
-  else if (term == "sedang") {
-    if (kendaraan == 20) return 1;
-    else if (kendaraan > 14 && kendaraan < 20) return (kendaraan - 14) / 6;
-    else if (kendaraan > 20 && kendaraan < 26) return (26 - kendaraan) / 6;
-    else return 0;
-  }
-  // IF kendaraan banyak
-  else {
-    if (kendaraan >= 30) return 1;
-    else if (kendaraan > 20 && kendaraan < 30) return (kendaraan - 20) / 10;
-    else return 0;
-  }
-}
-
-function lebarTerm(term) {
-  // IF lebar sempit
-  if (term == "sempit") {
-    if (lebar == 0) return 1;
-    else if (lebar > 0 && lebar < 6) return (6 - lebar) / 6;
-    else return 0;
-  }
-  // IF lebar sedang
-  else if (term == "sedang") {
-    if (lebar == 10) return 1;
-    else if (lebar > 4 && lebar < 10) return (lebar - 4) / 6;
-    else if (lebar > 10 && lebar < 16) return (16 - lebar) / 6;
-    else return 0;
-  }
-  // IF lebar lebar
-  else {
-    if (lebar >= 20) return 1;
-    else if (lebar > 14 && lebar < 20) return (lebar - 14) / 6;
-    else return 0;
-  }
-}
-
-function lamaTerm(termvar, term) {
-  // IF lama sebentar
-  if (termvar == "sebentar") {
-    return 15 - 15 * term;
-  }
-  // IF lama sedang
-  else if (termvar == "sedang") {
-    return 7 * term + 12;
-  }
-  // IF lama lama
-  else {
-    return 20 * term + 30;
+  if (Math.ceil(testans) != 0) {
+    input1.innerHTML = `Kendaraan = ${numvehicle} motor`;
+    input2.innerHTML = `Lebar Jalan = ${numwidth} m`;
+    result.innerHTML = Math.ceil(testans) + " detik";
   }
 }
