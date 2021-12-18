@@ -113,7 +113,7 @@ class Term {
 
   result(input) {
     if (this.type == "down") {
-      if (input == this.x[0]) return 1;
+      if (input <= this.x[0]) return 1;
       else if (input > this.x[0] && input < this.x[1])
         return (this.x[1] - input) / (this.x[1] - this.x[0]);
       else return 0;

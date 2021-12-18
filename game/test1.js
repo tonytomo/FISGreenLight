@@ -1,36 +1,41 @@
 let inputVar = [
   new Variable("vehicles", [
-    new Term("sedikit", "down", [0, 25]),
-    new Term("sedang", "updown", [20, 25, 30]),
-    new Term("banyak", "updown", [28, 35, 45]),
-    new Term("sangat banyak", "up", [40, 80]),
+    new Term("sedikit", "down", [0, 20]),
+    new Term("sedang", "updown", [20, 30, 45]),
+    new Term("banyak", "updown", [30, 45, 60]),
+    new Term("sangat banyak", "up", [50, 80]),
   ]),
   new Variable("roadwidth", [
-    new Term("sempit", "down", [0, 7]),
-    new Term("sedang", "updown", [2, 10, 17]),
-    new Term("lebar", "up", [13, 20]),
+    new Term("sempit", "down", [0, 5]),
+    new Term("sedang", "updown", [2, 7, 12]),
+    new Term("lebar", "updown", [10, 14, 16]),
+    new Term("sangat lebar", "up", [15, 20]),
   ]),
 ];
 
 let outputVar = new Variable("greentime", [
-  new Term("sebentar", "down", [0, 22]),
-  new Term("sedang", "updown", [16, 28, 40]),
+  new Term("sebentar", "down", [0, 15]),
+  new Term("sedang", "updown", [10, 25, 40]),
   new Term("lama", "up", [35, 45]),
 ]);
 
 let testrules = [
-  new Rule(["sedikit", "sempit"], "sedang"),
+  new Rule(["sedikit", "sempit"], "sebentar"),
   new Rule(["sedikit", "sedang"], "sebentar"),
   new Rule(["sedikit", "lebar"], "sebentar"),
+  new Rule(["sedikit", "sangat lebar"], "sebentar"),
   new Rule(["sedang", "sempit"], "sedang"),
   new Rule(["sedang", "sedang"], "sedang"),
   new Rule(["sedang", "lebar"], "sebentar"),
+  new Rule(["sedang", "sangat lebar"], "sebentar"),
   new Rule(["banyak", "sempit"], "lama"),
   new Rule(["banyak", "sedang"], "lama"),
   new Rule(["banyak", "lebar"], "sedang"),
+  new Rule(["banyak", "sangat lebar"], "sedang"),
   new Rule(["sangat banyak", "sempit"], "lama"),
   new Rule(["sangat banyak", "sedang"], "lama"),
   new Rule(["sangat banyak", "lebar"], "lama"),
+  new Rule(["sangat banyak", "sangat lebar"], "lama"),
 ];
 
 function calculate() {
